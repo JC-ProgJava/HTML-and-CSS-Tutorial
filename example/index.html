@@ -1,101 +1,165 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>HTML &amp; CSS Tutorial</title>
         <style id="style">
-            @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@300&family=Source+Sans+Pro:wght@300&display=swap");
+            @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@300&family=Source+Sans+Pro:wght@300&display=swap');
+
+            body {
+              color: var(--main-font-color) !important;
+              background-color: var(--main-back-color) !important;
+              transition: 0.8s background-color, 1.2s color;
+            }
+
             p {
-                font-family: "Open Sans", sans-serif;
-                padding-left: 45px;
+              font-family: 'Open Sans', sans-serif;
+              padding-left: 45px;
             }
+
             .sections h2 {
-                text-align: center;
-                font-family: "Roboto", sans-serif;
+              text-align: center;
+              font-family: 'Roboto', sans-serif;
             }
+
             a:visited {
-                text-decoration: none;
+              text-decoration: none;
             }
+
             a:hover {
-                color: burlywood;
+              color: burlywood;
             }
+
             a {
-                transition: 0.8s color;
-                color: black;
+              transition: .8s color;
+              color: var(--main-font-color);
             }
+
             li {
-                line-spacing: 1.2em;
-                font-family: "Open Sans", sans-serif;
-                margin-left: 45px;
+              line-spacing: 1.2em;
+              font-family: 'Open Sans', sans-serif;
+              margin-left: 45px;
             }
+
             .title {
-                font-family: "Source Sans Pro", arial;
-                text-align: center;
+              font-family: 'Source Sans Pro', arial;
+              text-align: center;
             }
+
             .starterList {
-                font-family: "Open Sans", sans-serif;
-                padding-left: 40px;
+              font-family: 'Open Sans', sans-serif;
+              padding-left: 40px;
             }
-            code,
-            table {
-                padding: 1.5em;
-                background-color: #faf8f5;
-                border-radius: 8px;
-                width: 85%;
-                margin-left: auto;
-                margin-right: auto;
-                display: block;
+
+            code, table {
+              color: black !important;
+              transition: .8s color, 1.2s background-color;
+              padding: 1.5em;
+              background-color: var(--main-code-color);
+              border-radius: 8px;
+              width: 85%;
+              margin-left: auto;
+              margin-right: auto;
+              display: block;
+              white-space: pre-wrap;
             }
+
             p code {
-                all: unset;
+              all: unset;
+              color: var(--main-font-color) !important;
+              transition: .8s color;
             }
+
             th td {
-                font-family: "Open Sans", sans-serif;
+              font-family: "Open Sans", sans-serif;
             }
+
             nav {
-                background-color: white;
-                width: 100%;
-                top: 0;
-                opacity: 0.98;
-                position: fixed;
+              background-color: var(--main-back-color);
+              width: 100%;
+              top: 0;
+              opacity: 0.98;
+              position: fixed;
+              display: inline;
+              transition: background-color 1.2s;
             }
-            #specialDemo,
-            .specialH1 {
-                margin: 0;
-                font-weight: 100;
-                font-family: "Open Sans", arial !important;
-                display: inline !important;
+
+            #specialDemo, .specialH1 {
+              margin: 0;
+              font-weight: 100;
+              font-family: 'Open Sans', arial !important;
+              display: inline !important;
             }
+
             .textDecor {
-                font-family: "Open Sans", sans-serif;
-                margin-left: 40px;
+              font-family: 'Open Sans', sans-serif;
+              margin-left: 40px;
             }
+
             img {
-                margin-top: 40px;
-                margin-bottom: 20px;
-                display: block;
-                width: 50%;
-                height: auto;
-                text-align: center;
-                margin-left: auto;
-                margin-right: auto;
+              margin-top: 40px;
+              margin-bottom: 20px;
+              display: block;
+              width: 50%;
+              height: auto;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
             }
+
             blockquote {
-                margin-inline-start: 0;
-                margin: 0;
+              margin-inline-start: 0;
+              margin: 0;
             }
+
             .noMargin {
-                padding: 0;
+              padding: 0;
             }
+
             .outputRaw {
-                margin-left: auto;
-                margin-right: auto;
-                width: 85%;
-                padding: 1.5em;
-                background-color: #faf8f5;
-                border-radius: 8px;
-                display: block;
-                white-space: pre-wrap;
+              color: black !important;
+              margin-left: auto;
+              margin-right: auto;
+              width: 85%;
+              padding: 1.5em;
+              background-color: var(--main-code-color);
+              border-radius: 8px;
+              display: block;
+              white-space: pre-wrap;
+            }
+
+            :root {
+              --main-font-color: black;
+              --main-back-color: white;
+              --main-code-color: #faf8f5;
+            }
+
+            .dark-mode {
+              --main-font-color: white !important;
+              --main-back-color: black !important;
+              --main-code-color: #fbf7f1;
+            }
+
+            .sepia {
+              --main-font-color: #5b4636 !important;
+              --main-back-color: #f4ecd8 !important;
+              --main-code-color: #fbf7f1;
+            }
+
+            #nav-mode {
+              float: right;
+              margin-right: 40px;
+              bottom: 30px;
+              margin-top: auto;
+              margin-bottom: auto;
+            }
+
+            #special-footer {
+              background-color: var(--main-back-color);
+              width: 100%;
+              bottom: 0;
+              position: fixed;
+              transition: background-color 1.2s;
             }
         </style>
     </head>
@@ -348,9 +412,38 @@
                 </ul>
             </section>
         </div>
-        <button id="button" onclick="insertMore();" style="visibility: hidden;">Click to continue</button>
-        <button id="allButton" onclick="showAll();" style="visibility: hidden;">Click to expand all</button>
-        <br />
-        <br />
+        <br><br><br><br><br><br><br>
+        <footer id="special-footer">
+            <br><button id="nav-mode" onclick="theme();">Toggle Mode</button><br><br>
+        </footer>
     </body>
+    <script>
+        if(localStorage.getItem('Theme') === null){
+            localStorage.setItem('Theme','light');
+        }
+
+        document.addEventListener('DOMContentLoaded', setATimeout());
+
+        function theme() {
+            if(localStorage.getItem('Theme') === "dark"){
+                localStorage.setItem('Theme','light');
+                document.body.classList.toggle("dark-mode");
+            }else if(localStorage.getItem('Theme') === "light") {
+                localStorage.setItem('Theme','sepia');
+                document.body.classList.toggle("sepia");
+            }else if(localStorage.getItem('Theme') === "sepia"){
+                localStorage.setItem('Theme','dark');
+                document.body.classList.toggle("dark-mode");
+                document.body.classList.toggle("sepia");
+            }
+        }
+
+        function setATimeout(){
+            if(localStorage.getItem('Theme') === "dark"){
+                document.body.classList.toggle("dark-mode");
+            }else if(localStorage.getItem('Theme') === "sepia"){
+                document.body.classList.toggle("sepia");
+            }
+        }
+    </script>
 </html>

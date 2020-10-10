@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML & CSS Tutorial</title>
+    <style id="style"></style>
+</head>
+<body>
+    <nav>
+        <h1 class="sections title">HTML & CSS Tutorial</h1>
+    </nav>
+    <br><br><br><br><br>
+    <div id="replaceHere"></div>
+    <button id="button" onclick="insertMore();">Click to continue</button>
+    <button id="allButton" onclick="showAll();">Click to expand all</button>
+    <br><br><br><br><br><br><br>
+    <footer id="special-footer">
+        <br><button id="nav-mode" onclick="theme();">Toggle Mode</button><br><br>
+    </footer>
+</body>
+<script>
+    var clickCount = -1;
+    var expandedAll = false;
+    var styling = ["@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@300&family=Source+Sans+Pro:wght@300&display=swap');body{color: var(--main-font-color) !important; background-color: var(--main-back-color) !important; transition: 0.8s background-color, 1.2s color;}p {font-family: 'Open Sans', sans-serif;padding-left: 45px;}.sections h2{text-align: center;font-family: 'Roboto', sans-serif;}a:visited{text-decoration: none;}a:hover{color: burlywood;}a {transition: .8s color;color: var(--main-font-color);}li{line-spacing: 1.2em;font-family: 'Open Sans', sans-serif;margin-left: 45px;}.title {font-family: 'Source Sans Pro', arial;text-align: center;}.starterList {font-family: 'Open Sans', sans-serif;padding-left: 40px;}code, table {color: black !important; transition: .8s color, 1.2s background-color; padding: 1.5em;background-color: var(--main-code-color);border-radius: 8px;width: 85%;margin-left: auto;margin-right: auto;display: block;white-space: pre-wrap;}p code {all: unset; color: var(--main-font-color) !important; transition: .8s color;}th td {font-family: \"Open Sans\", sans-serif;}nav {background-color: var(--main-back-color);width: 100%;top: 0;opacity: 0.98;position: fixed; display: inline;transition: background-color 1.2s;}#specialDemo, .specialH1 {margin: 0;font-weight: 100;font-family: 'Open Sans', arial !important;display: inline !important;}.textDecor {font-family: 'Open Sans', sans-serif;margin-left: 40px;}img {margin-top: 40px;margin-bottom: 20px;display: block;width: 50%;height: auto;text-align: center;margin-left: auto;margin-right: auto;}blockquote {margin-inline-start: 0;margin: 0;}.noMargin {padding: 0;}.outputRaw {color: black !important; margin-left: auto;margin-right: auto;width: 85%;padding: 1.5em;background-color: var(--main-code-color);border-radius: 8px;display: block;white-space: pre-wrap;}:root {--main-font-color: black;--main-back-color: white;--main-code-color: #faf8f5;}.dark-mode{--main-font-color: white !important;--main-back-color: black !important;--main-code-color: #fbf7f1;}.sepia{--main-font-color: #5b4636 !important;--main-back-color: #f4ecd8 !important;--main-code-color: #fbf7f1;}#nav-mode {float: right;margin-right: 40px;bottom: 30px;margin-top: auto;margin-bottom: auto;}#special-footer {background-color: var(--main-back-color);width: 100%;bottom: 0;position: fixed;transition: background-color 1.2s;}"];
+    var documentText = [
+    "<div class=\"starterList\"><h1>This is a h1 tag. Use &lt;h1&gt;&lt;h1/&gt;</h1><h2>This is a h2 tag. Use &lt;h2&gt;&lt;h2/&gt;</h2><h3>This is a h3 tag. Use &lt;h3&gt;&lt;h3/&gt;</h3><h4>This is a h4 tag. Use &lt;h4&gt;&lt;h4/&gt;</h4><h5>This is a h5 tag. Use &lt;h5&gt;&lt;h5/&gt;</h5><h6>This is a h6 tag. Use &lt;h6&gt;&lt;h6/&gt;</div></h6>",
+    "<p>This is a paragraph. Use &lt;p&gt;&lt;p/&gt;<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat ligula nec ex rhoncus, finibus fermentum neque rhoncus. Nunc efficitur vestibulum ante, vel gravida tortor convallis quis. Suspendisse luctus quis est ac sollicitudin. Maecenas quam justo, congue et mollis id, ultrices sit amet nisl. Sed dictum rhoncus libero, sed aliquet ante sagittis eget. Aliquam justo nulla, bibendum et suscipit nec, pellentesque at mauris. Aliquam at fermentum lacus. Nulla fermentum, augue a elementum finibus, dolor nunc faucibus ante, in vulputate odio nisi non lorem. Aliquam lacus risus, ullamcorper eget velit ut, accumsan maximusmassa.</p>",
+    "<p id=\"specialDemo\">Tags can be <h1 class=\"specialH1\">nested</h1></p><p class=\"specialDemo\"> like this</p><code>&lt;p&gt;Tags can be &lt;h1&gt;nested&lt;/h1&gt; like this&lt;/p&gt;</code>",
+    "<section class=\"sections\"><h2 id=\"structure\">Structure</h2><p>HTML tags all have opening tags &lt;<i>element</i>&gt; and closing tags &lt;/<i>element</i>&gt;. All HTML & CSS code go into a file(or seperated files) that has extension names <i>.html</i> and <i>.css</i>. Default structure of HTML file:</p><br><code>&lt;!DOCTYPE html&gt;<br>&lt;html lang=\"en\"&gt;<br>&lt;!--Comment--&gt;<br>&lt;!--Stylesheet(CSS) may go in link or as style tag in head--&gt;<br>&lt;head&gt;<br>&lt;meta charset=\"UTF-8\"&gt;<br>&lt;style&gt;&lt;/style&gt;<br>&lt;link rel=\"stylesheet\" href=\"mystyle.css\"&gt;<br>&lt;title&gt;Title&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br></code><img src=\"structure.png\"><br><code>&lt;!--Created with this line of code--&gt;<br>&lt;img src=\"structure.png\"&gt;</code></section>",
+    "<section class=\"sections\"><h2>Text Decoration</h2><p>Use tags &lt;mark&gt;, &lt;em&gt;, &lt;b&gt;, &lt;strong&gt;, &lt;i&gt;, &lt;small&gt;, &lt;del&gt;, &lt;ins&gt;, &lt;sub&gt; and &lt;sup&gt; to format elements to display special types of text.</p><div class=\"textDecor\"><mark>&lt;mark&gt;Highlighted text&lt;/mark&gt;</mark><br><b>&lt;b&gt;Bold text&lt;/b&gt;</b><br><strong>&lt;strong&gt;Strong text&lt;/strong&gt;</strong><br><i>&lt;i&gt;Italic&lt;/i&gt;</i><br><small>&lt;small&gt;Small text&lt;/small&gt;</small><br><del>&lt;del&gt;Deleted Text&lt;/del&gt;</del><br><ins>&lt;ins&gt;Inserted Text&lt;/ins&gt;</ins><br><em>&lt;em&gt;Emphasis&lt;/em&gt;</em><br>Hello <sub>&lt;sub&gt;Subscript&lt;/sub&gt;</sub>!<br>Hello <sup>&lt;sup&gt;Superscript&lt;/sup&gt;</sup>!</div><br></section>",
+    "<section class=\"sections\"><h2>Quotations</h2><p>Use tags &lt;blockquote&gt;, &lt;q&gt;, &lt;abbr&gt;, &lt;address&gt;, &lt;cite&gt;, &lt;bdo&gt; to quote text.</p><div class=\"textDecor\"><blockquote>&lt;blockquote&gt;Blockquote&lt;/blockquote&gt;</blockquote><q>&lt;q&gt;Quote&lt;/q&gt;</q><br><abbr>&lt;abbr&gt;Abbreviation&lt;/abbr&gt;</abbr><br><address>&lt;address&gt;Address&lt;/address&gt;</address><br><cite>&lt;cite&gt;Citation&lt;/cite&gt;</cite><br><p class=\"noMargin\">Bi-Directional Override</p>&lt;bdo dir=\"rtl\"&gt;<bdo dir=\"rtl\">Hello</bdo>&lt;/bdo&gt;</div><br></section>",
+    "<section class=\"sections\"><h2>Comments</h2><p>Use tag &lt;!----&gt; to enclose single or multi-line code/text.</p><code>&lt;!--Single line comment--&gt;<br><br>&lt;!--Multi-line comment<br> &lt;h1&gt;error in this tag&lt;/h1--&gt;</code></section>",
+    "<section class=\"sections\"><h2 id=\"styling\">Colors and Styling</h2><p>Style and color HTML content using the <code>style</code> attribute like this:<br></p><code>&lt;h3 style=\"background-color: tomato; color: blue;\"&gt;Hello&lt;/h3&gt;</code><h3 class=\"outputRaw\" style=\"background-color: tomato; color: blue !important;\">Hello</h3><p>Syntax structure:</p><code><i>selector</i> { <i>property</i>: <i>value</i>; }</code><p>You can also style text with the <code>&lt;style&gt;</code> tags in the head or in a external stylesheet linked to the HTML document, as shown in the <a href=\"#structure\">Structure</a> section.<br>Color formats used in HTML are: <ul><li>Hexadecimal values</li><li>RGB values</li><li>Name values(like Blue, Red, Black, Tomato...)</li></ul></p></section>",
+    "<section class=\"sections\"><h2>Links and Images</h2><p>Links takes the form <code>&lt;a href=\"https://www.google.com/\"&gt;</code> in HTML.<br>Links can have additional properties like:</p><table><tr><th>Property</th><th>Values</th></tr><tr><td>target</td><td><ul><li>_blank (open in new tab)</li><li>_parent (opens on this tab)</li><li>_self (opens on this tab)</li><li>_top (opens on this tab)</li></ul></td></tr></table><p>They can also link to different parts of this webpage like the link in the <a href=\"#styling\">Colors and Styling</a> section.<br></p><code>&lt;a href=\"#styling\"&gt;Hello!&lt;/a&gt;&nbsp;&lt;!--Uses the id tag with \'#\' to link to section--&gt;<br>&lt;h2 id=\"styling\"&gt;Colors and Styling&lt;/h2&gt;</code><p>Images can also be inserted using the <code>&lt;img&gt;</code> tag:</p><code>&lt;img src=\"image.jpg\"&gt;</code><p>Note that the image tag does not require a closing tag. You can also add a alternate text if the image does not load in the website like this:</p><code>&lt;img src=\"image.jpg\" alt=\"Image failed to load\"&gt;</code><p>Output: </p><img src=\"image.jpg\" alt=\"Image failed to load\"><p>Images can also link to other places when enclosed in <code>&lt;a&gt;</code> tags.</p></section>",
+    "<section class=\"sections\">&nbsp;&nbsp;&nbsp;&nbsp<h2>Tables and Lists</h2><p>Tables are created with the <code>&lt;table&gt;</code> tag. Each row is wrapped in <code>&lt;tr&gt;</code>(table row) tags and their content is wrapped in <code>&lt;th&gt;</code>(table head) and <code>&lt;td&gt;</code>(table data) tags.</p><table>&nbsp;&nbsp;&nbsp;&nbsp<tr>&nbsp;&nbsp;&nbsp;&nbsp<th>Header</th>&nbsp;&nbsp;&nbsp;&nbsp<th>Name</th>&nbsp;&nbsp;&nbsp;&nbsp</tr>&nbsp;&nbsp;&nbsp;&nbsp<tr>&nbsp;&nbsp;&nbsp;&nbsp<td>Row 1</td>&nbsp;&nbsp;&nbsp;&nbsp<td>John</td>&nbsp;&nbsp;&nbsp;&nbsp</tr>&nbsp;&nbsp;&nbsp;&nbsp<tr>&nbsp;&nbsp;&nbsp;&nbsp<td>Row 2</td>&nbsp;&nbsp;&nbsp;&nbsp<td>Mary</td>&nbsp;&nbsp;&nbsp;&nbsp</tr>&nbsp;&nbsp;&nbsp;&nbsp</table>&nbsp;&nbsp;&nbsp;&nbsp</div>&nbsp;&nbsp;&nbsp;&nbsp<br>&nbsp;&nbsp;&nbsp;&nbsp<code>&nbsp;&nbsp;&nbsp;&nbsp&lt;div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&lt;table&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Header&lt;/th&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Name&lt;/th&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Row 1&lt;/td&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;John&lt;/td&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Row 2&lt;/td&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Mary&lt;/td&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&lt;/table&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&lt;/div&gt;&nbsp;&nbsp;&nbsp;&nbsp</code>&nbsp;&nbsp;&nbsp;&nbsp<p>Lists are created with the <code>&lt;ol&gt;</code>(ordered list/numbered list) or <code>&lt;ul&gt;</code>(unordered list/bullet list) tags. Each value is wrapped in <code>&lt;li&gt;</code>(list item) tags.</p><div class=\"outputRaw\"><ol><li>No. 1</li><li>No. 2</li><li>No. 3</li>&nbsp;&nbsp;&nbsp;&nbsp</ol><ul><li>Bullet 1</li><li>Bullet 2</li><li>Bullet 3</li></ul></div><br><br><code>&nbsp;&nbsp;&nbsp;&nbsp&lt;div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&lt;ol&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;No. 1&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;No. 2&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;No. 3&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ol&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Bullet 1&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Bullet 2&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Bullet 3&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp</code>&nbsp;&nbsp;&nbsp;&nbsp</section>",
+    "<section class=\"sections\"><h2>Styling This Webpage</h2><p>This webpage now has been styled with CSS. Take a look around! Is there a big change?</p><p>Now it is your turn! Try and make your own styles of this webpage! You can find the code at <a href=\"https://github.com/JC-ProgJava/HTML-and-CSS-Tutorial\" target=\"_blank\">Github</a>, just follow the instructions on the site and you\'re ready to go!</p><p>Resources:<br></p><ul><li><a href=\"https://www.w3schools.com/html/\" target=\"_blank\">W3Schools Tutorial</a></li><li><a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Element\" target=\"_blank\">Mozilla Documentation HTML</a></li><li><a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/Reference\" target=\"_blank\">Mozilla Documentation CSS</a></li></ul></section>"];
+    let y = ""
+    for(let x in documentText){
+        y += documentText[x];
+    }
+    console.log(y)
+    if(localStorage.getItem('Theme') === null){
+        localStorage.setItem('Theme','light');
+    }
+
+    document.addEventListener('DOMContentLoaded', setATimeout());
+    function theme() {
+        if(localStorage.getItem('Theme') === "dark"){
+            localStorage.setItem('Theme','light');
+            document.body.classList.toggle("dark-mode");
+        }else if(localStorage.getItem('Theme') === "light") {
+            localStorage.setItem('Theme','sepia');
+            document.body.classList.toggle("sepia");
+        }else if(localStorage.getItem('Theme') === "sepia"){
+            localStorage.setItem('Theme','dark');
+            document.body.classList.toggle("dark-mode");
+            document.body.classList.toggle("sepia");
+        }
+    }
+
+    function setATimeout(){
+        if(localStorage.getItem('Theme') === "dark"){
+            document.body.classList.toggle("dark-mode");
+        }else if(localStorage.getItem('Theme') === "sepia"){
+            document.body.classList.toggle("sepia");
+        }
+    }
+
+    function style() {
+        document.getElementById('style').innerHTML += styling[0];
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function insertMore() {
+        clickCount++;
+        document.getElementById('replaceHere').innerHTML += documentText[clickCount];
+        if(clickCount == documentText.length - 1) {
+            document.getElementById('allButton').style.visibility = "hidden";
+            document.getElementById('button').style.visibility = "hidden";
+            style();
+        }
+    }
+
+    function showAll() {
+        document.getElementById('replaceHere').innerHTML = "";
+        for(let x in documentText){
+            document.getElementById('replaceHere').innerHTML += documentText[x];
+        }
+        document.getElementById('allButton').style.visibility = "hidden";
+        document.getElementById('button').style.visibility = "hidden";
+        style();
+    }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-172829414-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-172829414-2');
+</script>
+</html>

@@ -1,6 +1,7 @@
 # HTML-and-CSS-Tutorial
 
 [![CodeFactor](https://www.codefactor.io/repository/github/jc-progjava/html-and-css-tutorial/badge)](https://www.codefactor.io/repository/github/jc-progjava/html-and-css-tutorial)
+![LOC](https://tokei.rs/b1/github/jc-progjava/html-and-css-tutorial)
 
 Tutorial on HTML and CSS.
 
